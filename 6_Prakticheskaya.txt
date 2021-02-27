@@ -1,0 +1,39 @@
+import numpy as np
+
+number = int(input('Введите номер примера от 1 до 3: '))
+
+if number  == 1 :
+    
+    n, m = [int(i) for i in input('Введите размер матрицы: ').split()]
+    a = np.random.rand(n, m)
+    max_i, max_j = 0, 0
+    maximum = a[0][0]
+    for i in range(n):
+        for j in range(m):
+            if a[i][j] > maximum:
+                maximum = a[i][j]
+                max_i, max_j = i, j
+    print('Строка максимального элемента:', max_i+1, '. Столбец максимального элемента', max_j+1)
+ 
+elif number == 2 :
+
+    a = np.random.rand(3, 3)
+    print('Среднее арифметическое ~', round(a.mean(), 2))
+    print('Сумма модулей диагонали ~', round(sum(abs(a.diagonal())), 2))
+    print('Кол-во уникальных элементов в списке:', len(np.unique(a)))
+
+elif number == 3 :
+
+    a = np.array([np.random.randint(0, 10000) for i in range(30)])
+    minimum = a.min()
+    print('Начальный массив:', a)
+    print('Минимальное значение:', minimum)
+    for i in range(30) :
+        if a[i] < minimum * 2 :
+            a[i] *= 2
+            print('Число', a[i]/2, 'заменяем на:', a[i], ', индекс элемента:', i)
+    print('Окончательный массив:', a)
+
+else :
+    
+    print('Извините, но такого примера не существует!')
